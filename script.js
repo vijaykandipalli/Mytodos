@@ -5,6 +5,49 @@ const taskCount = document.getElementById("task-count");
 const emptyState = document.querySelector(".empty-state");
 const filterBtns = document.querySelectorAll(".filter");
 
+
+function renderTodos() {
+    todoList.innerHTML = "";
+
+    const filteredTodos = todos.filter(todo => {
+        if (currentFilter === "active") return !todo.completed;
+        if (currentFilter === "completed") return todo.completed;
+        return true; 
+    });
+
+   
+    filteredTodos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        li.className = `todo-item ${todo.completed ? "completed" : ""}`;
+
+        li.innerHTML = `
+            <label>
+                <input type="checkbox" ${todo.completed ? "checked" : ""}>
+                <span>${todo.text}</span>
+            </label>
+            <i class="fa-solid fa-trash delete-btn"></i>
+        `;
+
+        li.querySelector("input").addEventListener("change", () => {
+            todo.completed = !todo.completed;
+            saveAndRender();
+        });
+
+    
+        li.querySelector(".delete-btn").addEventListener("click", () => {
+            todos.splice(index, 1);
+            saveAndRender();
+        });
+
+        todoList.appendChild(li);
+    });
+
+    updateCount();
+    showEmptyState();
+}
+
+
+
 addBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keydown", e => {
