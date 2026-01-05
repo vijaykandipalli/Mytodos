@@ -5,6 +5,8 @@ const taskCount = document.getElementById("task-count");
 const emptyState = document.querySelector(".empty-state");
 const filterBtns = document.querySelectorAll(".filter");
 
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+let currentFilter = "all";
 
 function renderTodos() {
     todoList.innerHTML = "";
@@ -85,3 +87,10 @@ function updateCount() {
 function showEmptyState() {
     emptyState.style.display = todos.length === 0 ? "block" : "none";
 }
+
+function saveAndRender() {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderTodos();
+}
+
+renderTodos();
