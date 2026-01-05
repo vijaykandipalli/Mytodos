@@ -23,3 +23,13 @@ function addTask() {
     taskInput.value = "";
     saveAndRender();
 }
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        currentFilter = btn.dataset.filter;
+        renderTodos();
+    });
+});
