@@ -33,3 +33,12 @@ filterBtns.forEach(btn => {
         renderTodos();
     });
 });
+
+function updateCount() {
+    const remaining = todos.filter(todo => !todo.completed).length;
+    taskCount.textContent = `${remaining} task${remaining !== 1 ? "s" : ""} remaining`;
+}
+
+function showEmptyState() {
+    emptyState.style.display = todos.length === 0 ? "block" : "none";
+}
