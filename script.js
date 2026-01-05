@@ -10,3 +10,16 @@ addBtn.addEventListener("click", addTask);
 taskInput.addEventListener("keydown", e => {
     if (e.key === "Enter") addTask();
 });
+
+function addTask() {
+    const text = taskInput.value.trim();
+    if (!text) return;
+
+    todos.push({
+        text: text,
+        completed: false
+    });
+
+    taskInput.value = "";
+    saveAndRender();
+}
