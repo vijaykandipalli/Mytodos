@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>My Tasks</h1>
+    <p class="subtitle">Stay on top of your day</p>
+
+    <div class="remaining">
+        <span id="task-count">0 tasks remaining</span>
+    </div>
+
+    <div class="input-section">
+        <input type="text" id="task-input" placeholder="Add a new task..." autocomplete="off">
+        <button id="add-btn" type="button">Add</button>
+    </div>
+
+
+    <div class="filters">
+        <button class="filter active" data-filter="all" type="button">All</button>
+        <button class="filter" data-filter="active" type="button">Active</button>
+        <button class="filter" data-filter="completed" type="button">Completed</button>
+    </div>
+
+   
+    <ul class="todo-list" id="todo-list"></ul>
+
+    <div class="empty-state">
+        <p>No tasks yet 🎉</p>
+        <small>Add one above to get started</small>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
